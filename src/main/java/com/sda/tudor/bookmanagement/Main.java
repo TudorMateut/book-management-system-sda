@@ -32,6 +32,9 @@ public class Main {
                 case CREATE_AUTHOR:
                    authorController.createAuthor();
                     break;
+                case SHOW_ALL_AUTHORS:
+                    authorController.showAllAuthors();
+                    break;
                 case EXIT:
                     System.out.println("Goodbye!");
                     break;

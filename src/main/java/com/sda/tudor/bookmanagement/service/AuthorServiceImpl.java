@@ -4,6 +4,8 @@ import com.sda.tudor.bookmanagement.model.Author;
 import com.sda.tudor.bookmanagement.repository.AuthorRepository;
 import com.sda.tudor.bookmanagement.service.exception.InvalidParameterException;
 
+import java.util.List;
+
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
 
@@ -21,5 +23,10 @@ public class AuthorServiceImpl implements AuthorService {
         }
 
         authorRepository.create(new Author(firstName, lastName));
+    }
+
+    @Override
+    public List<Author> getAllAuthors() {
+        return authorRepository.findAll();
     }
 }

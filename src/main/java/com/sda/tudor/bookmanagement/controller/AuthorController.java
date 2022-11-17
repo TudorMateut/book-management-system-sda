@@ -28,4 +28,10 @@ public class AuthorController {
             System.out.println("Internal server error!");
         }
     }
+
+    public void showAllAuthors() {
+        authorService.getAllAuthors().stream().forEach(author ->
+                System.out.println("Author with id: " + author.getId() + " first name: " + author.getFirstName() + " last name: " + author.getLastName())
+        );
+    }
 }
