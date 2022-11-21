@@ -1,9 +1,12 @@
 package com.sda.tudor.bookmanagement;
 
 import com.sda.tudor.bookmanagement.controller.AuthorController;
+import com.sda.tudor.bookmanagement.controller.BookController;
 import com.sda.tudor.bookmanagement.menu.UserOption;
 import com.sda.tudor.bookmanagement.repository.AuthorRepositoryImpl;
+import com.sda.tudor.bookmanagement.repository.BookRepositoryImpl;
 import com.sda.tudor.bookmanagement.service.AuthorServiceImpl;
+import com.sda.tudor.bookmanagement.service.BookServiceImpl;
 import com.sda.tudor.bookmanagement.utils.SessionManager;
 
 import java.util.Scanner;
@@ -14,6 +17,7 @@ public class Main {
         SessionManager.getSessionFactory();
 
         AuthorController authorController = new AuthorController(new AuthorServiceImpl(new AuthorRepositoryImpl()));
+        BookController bookController = new BookController(new BookServiceImpl(new BookRepositoryImpl(), new AuthorRepositoryImpl()));
         Scanner scanner = new Scanner(System.in);
 
         UserOption userOption;
@@ -30,7 +34,7 @@ public class Main {
 
             switch (userOption) {
                 case CREATE_AUTHOR:
-                   authorController.createAuthor();
+                    authorController.createAuthor();
                     break;
                 case SHOW_ALL_AUTHORS:
                     authorController.showAllAuthors();
@@ -41,6 +45,8 @@ public class Main {
                 case DELETE_AUTHOR:
                     authorController.deleteAuthor();
                     break;
+                case CREATE_BOOK:
+                    bookController.createBook();
                 case EXIT:
                     System.out.println("Goodbye!");
                     break;
