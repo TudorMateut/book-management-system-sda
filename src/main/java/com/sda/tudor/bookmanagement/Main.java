@@ -2,10 +2,13 @@ package com.sda.tudor.bookmanagement;
 
 import com.sda.tudor.bookmanagement.controller.AuthorController;
 import com.sda.tudor.bookmanagement.controller.BookController;
+import com.sda.tudor.bookmanagement.controller.BookReviewController;
 import com.sda.tudor.bookmanagement.menu.UserOption;
 import com.sda.tudor.bookmanagement.repository.AuthorRepositoryImpl;
 import com.sda.tudor.bookmanagement.repository.BookRepositoryImpl;
+import com.sda.tudor.bookmanagement.repository.BookReviewRepositoryImpl;
 import com.sda.tudor.bookmanagement.service.AuthorServiceImpl;
+import com.sda.tudor.bookmanagement.service.BookReviewServiceImpl;
 import com.sda.tudor.bookmanagement.service.BookServiceImpl;
 import com.sda.tudor.bookmanagement.utils.SessionManager;
 
@@ -18,6 +21,7 @@ public class Main {
 
         AuthorController authorController = new AuthorController(new AuthorServiceImpl(new AuthorRepositoryImpl()));
         BookController bookController = new BookController(new BookServiceImpl(new BookRepositoryImpl(), new AuthorRepositoryImpl()));
+        BookReviewController bookReviewController = new BookReviewController(new BookReviewServiceImpl(new BookRepositoryImpl(), new BookReviewRepositoryImpl()));
         Scanner scanner = new Scanner(System.in);
 
         UserOption userOption;
@@ -50,6 +54,9 @@ public class Main {
                     break;
                 case SHOW_ALL_BOOKS:
                     bookController.showAllBooks();
+                    break;
+                case CREATE_BOOK_REVIEW:
+                    bookReviewController.createBookReview();
                     break;
                 case EXIT:
                     System.out.println("Goodbye!");
