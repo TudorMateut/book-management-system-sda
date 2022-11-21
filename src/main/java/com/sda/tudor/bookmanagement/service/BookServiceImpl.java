@@ -8,6 +8,7 @@ import com.sda.tudor.bookmanagement.service.exception.EntityNotFoundException;
 import com.sda.tudor.bookmanagement.service.exception.InvalidParameterException;
 
 import javax.swing.text.html.parser.Entity;
+import java.util.List;
 import java.util.Optional;
 
 public class BookServiceImpl implements BookService {
@@ -34,11 +35,16 @@ public class BookServiceImpl implements BookService {
         if (authorOptional.isEmpty()) {
             throw new EntityNotFoundException("Author with provided id " + authorId + " was not found!");
         }
-        Author author = authorOptional.get();
+        Author author = authorOptional.get(); //get the id found
 
-        Book book = new Book(title, description);
-        book.setAuthor(author);
+        Book book = new Book(title, description); //create the book with title and description
+        book.setAuthor(author); //connect author with book
 
-        bookRepository.create(book);
+        bookRepository.create(book); //create automatic book to repository
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 }

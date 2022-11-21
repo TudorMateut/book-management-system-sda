@@ -29,7 +29,7 @@ The system should validate the book title and description to not be empty or bla
 The system should generate a new unique identification number.
 In case author id does not exist in the system, the system will show an error message.
 
-BMS-6: As a user I should be able to view all the books.
+DONE - BMS-6: As a user I should be able to view all the books.
 Existing books should be listed on the screen.
 Each line should show the book id, title, description and author full name.
 
