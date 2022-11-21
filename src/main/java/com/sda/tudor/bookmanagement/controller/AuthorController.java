@@ -50,6 +50,24 @@ public class AuthorController {
         }
     }
 
+    public void deleteAuthor() {
+        try {
+            System.out.println("Please insert an author id!");
+            int authorId = Integer.parseInt(scanner.nextLine());
+
+            authorService.deleteAuthor(authorId);
+            System.out.println("Author was deleted!");
+        } catch (NumberFormatException e) {
+            System.out.println("Provided author id is not a number!");
+        } catch (InvalidParameterException e) {
+            System.out.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Internal server error!");
+        }
+    }
+
     public void showAllAuthors() {
         authorService.getAllAuthors().stream().forEach(author ->
                 System.out.println("Author with id: " + author.getId() + " first name: " + author.getFirstName() + " last name: " + author.getLastName())
