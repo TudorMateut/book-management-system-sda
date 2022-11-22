@@ -58,6 +58,9 @@ public class Main {
                 case CREATE_BOOK_REVIEW:
                     bookReviewController.createBookReview();
                     break;
+                case IMPORT_AUTHORS:
+                    authorController.importAuthors();
+                    break;
                 case EXIT:
                     System.out.println("Goodbye!");
                     break;

@@ -4,6 +4,7 @@ import com.sda.tudor.bookmanagement.service.AuthorService;
 import com.sda.tudor.bookmanagement.service.exception.EntityNotFoundException;
 import com.sda.tudor.bookmanagement.service.exception.InvalidParameterException;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AuthorController {
@@ -68,9 +69,21 @@ public class AuthorController {
         }
     }
 
+    public void importAuthors() {
+        try {
+            System.out.println("Authors import started!");
+            authorService.importAuthors();
+            System.out.println("Authors import is finished!");
+        } catch (IOException e) {
+            System.out.println("Internal server error, import failed!");
+        }
+    }
+
     public void showAllAuthors() {
         authorService.getAllAuthors().stream().forEach(author ->
-                System.out.println("Author with id: " + author.getId() + " first name: " + author.getFirstName() + " last name: " + author.getLastName())
+                System.out.println("Author with id: " + author.getId()
+                        + " first name: " + author.getFirstName()
+                        + " last name: " + author.getLastName())
         );
     }
 }
