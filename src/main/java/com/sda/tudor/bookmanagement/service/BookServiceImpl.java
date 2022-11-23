@@ -76,6 +76,20 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void deleteBook(int bookId) throws InvalidParameterException, EntityNotFoundException {
+        if (bookId < 1) {
+            throw new InvalidParameterException("Provided value for book id: " + bookId + " is invalid");
+        }
+        Optional<Book> bookOptional = bookRepository.findById(bookId);
+        if (bookOptional.isEmpty()) {
+            throw new EntityNotFoundException("Book with provided id " + bookId + " was not found!");
+        }
+        Book book = bookOptional.get();
+
+        bookRepository.delete(book);
+    }
+
+    @Override
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }

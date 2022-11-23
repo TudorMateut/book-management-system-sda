@@ -39,16 +39,16 @@ public class BookController {
 
     public void updateBook() {
         try {
-        System.out.println("Please insert a book id!");
-        int bookId = Integer.parseInt(scanner.nextLine());
-        System.out.println("Please insert a title!");
-        String tile = scanner.nextLine();
-        System.out.println("Please insert a description!");
-        String description = scanner.nextLine();
-        System.out.println("Please insert an author id!");
-        int authorId = Integer.parseInt(scanner.nextLine());
+            System.out.println("Please insert a book id!");
+            int bookId = Integer.parseInt(scanner.nextLine());
+            System.out.println("Please insert a title!");
+            String tile = scanner.nextLine();
+            System.out.println("Please insert a description!");
+            String description = scanner.nextLine();
+            System.out.println("Please insert an author id!");
+            int authorId = Integer.parseInt(scanner.nextLine());
 
-        bookService.updateBook(bookId, tile, description, authorId);
+            bookService.updateBook(bookId, tile, description, authorId);
             System.out.println("Book was update");
         } catch (InvalidParameterException e) {
             System.out.println(e.getMessage());
@@ -58,6 +58,22 @@ public class BookController {
             System.out.println("Please insert numeric value for author or book id!");
         } catch (Exception e) {
             System.out.println("Internal system error!");
+        }
+    }
+
+    public void deleteBook() {
+        try {
+            System.out.println("Please insert a book id!");
+            int bookId = Integer.parseInt(scanner.nextLine());
+
+            bookService.deleteBook(bookId);
+            System.out.println("Book was deleted!");
+        } catch (InvalidParameterException e) {
+            System.out.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Please insert numeric value for book id!");
         }
     }
 
