@@ -48,7 +48,7 @@ In case book id does not exist in the system, the system will show an error mess
 HW - BMS-10: As a user I should be able to view all the reviews in a list.
 Each line should contain the book title, score and comment.
 
-BMS-11: As a user I should be able to view all the reviews for a given book title.
+HW - BMS-11: As a user I should be able to view all the reviews for a given book title.
 In case book title does not exist in the system, the system will show an error message.
 
-S-12: As a user I should be able to import CSV files with existing data for authors, books and reviews.
+DONE FOR AUTHORS - BMS-12: As a user I should be able to import CSV files with existing data for authors, books and reviews.
